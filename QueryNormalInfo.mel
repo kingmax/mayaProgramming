@@ -1,0 +1,99 @@
+//QueryNormalInfo.mel
+
+proc make_scene()
+{
+    file -f -new;
+    polyCube -n "cube";
+    polyOptions -displayNormal true;
+    displayStyle -textured;
+    displayStyle -wireframeOnShaded;
+    file -rename "CubeMesh.ma";
+    file -type "mayaAscii" -save;
+}
+
+make_scene();
+
+select -r cube.f[0];
+polyInfo -faceNormals;
+// Result: FACE_NORMAL      0: 0.000000 0.000000 1.000000
+ // 
+
+select -r cube.vtxFace[3][0];
+polyNormalPerVertex -q -xyz;
+// Result: 0 0 1 // 
+select -r cube.vtx[3];
+polyNormalPerVertex -q -xyz;
+// Result: 1 0 0 0 0 1 0 1 0 // 
+
+//calculate vertex normal:
+string $pi[] = `polyInfo -vertexToFace`;
+string $piParts[];
+tokenize $pi[0] $piParts;
+int $i;
+int $faceID;
+vector $vNormal = 0;
+vector $fNormal;
+string $pi2[], $piParts2[];
+print($piParts);
+/*
+VERTEX
+3:
+1
+0
+4
+*/
+//$piParts = [VERTEX, 3:, 1, 0, 4], so i start=2
+for($i=2; $i<size($piParts); $i++)
+{
+    $faceID = $piParts[$i];
+    $pi2 = `polyInfo -faceNormals ("cube.f[" + $faceID + "]")`;
+    tokenize $pi2[0] $piParts2;
+    $fNormal = << float($piParts2[2]), float($piParts2[3]), float($piParts2[4]) >>;
+    $vNormal += $fNormal;
+}
+
+$vNormal = `unit $vNormal`;
+// Result: <<0.57735, 0.57735, 0.57735>>  // 
+print($vNormal);
+
+
+
+proc averageVertexNormal(string $verts[])
+{
+    string $pi[], $piParts[], $pi2[], $piParts2[];
+    int $i, $j;
+    vector $vn=0, $fn=0;
+    for($i=0; $i<size($verts); $i++)
+    {
+        select -r $verts[$i];
+        $pi = `polyInfo -vertexToFace`;
+        print(size($pi));
+        tokenize $pi[0] $piParts;
+        for($j=2; $j<size($piParts); $j++)
+        {
+            $f = $piParts[$j];
+            $pi2 = `polyInfo -faceNormals ("cube.f[" + $f + "]")`;
+            tokenize $pi2[0] $piParts2;
+            $fn = <<float($piParts2[2]), float($piParts2[3]), float($piParts2[4])>>;
+            $vn += $fn;
+        }
+        $vn = `unit $vn`;
+        print("\n");
+        print($vn);
+        PolySelectConvert 3;
+        print($vn.x);
+        print($vn.y);
+        print($vn.z);
+        polyNormalPerVertex -xyz ($vn.x) ($vn.y) ($vn.z);
+    }
+}
+
+string $verts[] = `filterExpand -sm 31`;
+if(size($verts))
+{
+    averageVertexNormal($verts);
+}
+
+
+
+

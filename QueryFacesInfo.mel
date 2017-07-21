@@ -1,0 +1,45 @@
+//QueryFacesInfo.mel
+
+proc makeScene()
+{
+    file -f -new;
+    polyPlane -w 5 -sw 1 -h 5 -sh 1 -n "square";
+    polyConnectComponents square.vtx[1:2];
+    file -rn "TwoPolygonMesh.ma";
+    file -type "mayaAscii" -s;
+}
+
+makeScene();
+
+string $sel[] = `ls -long -dag -geometry -sl`;
+int $i, $j, $k;
+for($i=0; $i<size($sel); $i++)
+{
+    string $node = $sel[$i];
+    int $res[] = `polyEvaluate -face $node`;
+    //polyEvaluate -face square;
+    // Result: 2 // 
+    int $nFaces = $res[0];
+    float $pos[3];
+    int $vIndex;
+    print($node + " has " + $nFaces + " faces;\n");
+    
+    for($j=0; $j<$nFaces; $j++)
+    {
+        string $pi[] = `polyInfo -faceToVertex ($node + ".f[" + $j + "]")`;
+        //polyInfo -faceToVertex square.f[0];
+        // Result: FACE      0:      0      1      2 
+         // 
+        string $piParts[];
+        tokenize $pi[0] $piParts;
+        
+        print("Poly " + $j + ":\n");
+        print(" # Verts: " + (size($piParts)-2) + "\n");
+        for($k=2; $k<size($piParts); $k++)
+        {
+            $vIndex = $piParts[$k];
+            $pos = `pointPosition -world ($node + ".vtx[" + $vIndex + "]")`;
+            print(" " + $vIndex + ": (" + $pos[0] + ", " + $pos[1] + ", " + $pos[2] + ")\n");
+        }
+    }
+}

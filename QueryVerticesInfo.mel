@@ -1,0 +1,51 @@
+//Querying Meshes [Vertices]
+
+//create scene
+file -new -force;
+polyPlane -w 5 -sw 1 -h 5 -sh 1 -n "square";
+file -rename "BasicPolygon.ma";
+file -f -type "mayaAscii" -save;
+
+
+//A.vertices
+polyEvaluate -vertex;
+//print all vertices
+int $res[] = `polyEvaluate -vertex`;
+int $nVerts = $res[0];
+float $pos[3];
+int $i;
+for($i=0; $i<$nVerts; $i++)
+{
+    $pos = `getAttr square.vrts[$i]`;
+    print($pos[0] + ", " + $pos[1] + ", " + $pos[2] + "\n");
+}
+
+//another
+float $coords[] = `getAttr square.vrts["*"]`;
+int $nVerts = size($coords) / 3;
+int $i;
+for($i=0; $i<size($coords); $i+=3)
+{
+    print( $coords[$i] + ", " +
+           $coords[$i+1] + ", " +
+           $coords[$i+2] + "\n" );
+}
+
+print `pointPosition -local square.vtx[0]`;
+print `pointPosition -world square.vtx[0]`;
+setAttr square.translateY 3.0;
+print `pointPosition -local square.vtx[0]`;
+print `pointPosition -world square.vtx[0]`;
+
+//world space
+int $res[] = `polyEvaluate -vertex`;
+int $nVerts = $res[0];
+float $pos[3];
+int $i;
+for($i=0; $i<$nVerts; $i++)
+{
+    $pos = `pointPosition -world ("square.vtx[" + $i + "]")`;
+    print($pos[0] + ", " + $pos[1] + ", " + $pos[2] + "\n");
+}
+
+

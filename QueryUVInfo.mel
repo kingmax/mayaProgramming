@@ -1,0 +1,26 @@
+//QueryUVInfo.mel
+
+proc make_scene()
+{
+    file -new -f;
+    polyPlane -w 1 -sw 2 -h 1 -sh 1 -name "square";
+    polyUVSet -create -uvSet "map2";
+    polyUVSet -copy -uvSet "map1" -newUVSet "map2";
+    displayStyle -textured;
+    displayStyle -wireframeOnShaded;
+    file -rename "TwoPolygonMesh.ma";
+    file -type "mayaAscii" -save;
+}
+
+make_scene();
+
+polyUVSet -q -allUVSets;
+polyUVSet -q -currentUVSet;
+
+//
+select -r square.map["*"];
+polyEditUV -q -u -v;
+// Result: 0 0 0.5 0 1 0 0 1 0.5 1 1 1 // 
+polyEditUV -u 1 -v 1;
+polyEditUV -q -u -v;
+// Result: 1 1 1.5 1 2 1 1 2 1.5 2 2 2 // 

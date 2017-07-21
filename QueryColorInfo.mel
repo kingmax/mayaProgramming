@@ -1,0 +1,28 @@
+//QueryColorInfo.mel
+
+file -f -new;
+polyPlane -w 5 -h 5 -sw 2 -sh 1 -n "square";
+displayStyle -textured;
+displayStyle -wireframeOnShaded;
+file -rename "TwoPolygonMesh.ma";
+file -type "mayaAscii" -save;
+
+polyOptions -colorShadedDisplay 1 -colorMaterialChannel "none";
+
+select -r square.vtx[4];
+polyColorPerVertex -rgb 1 1 0;
+
+selectMode -component;
+selectType -polymeshVtxFace true;
+selectType -q -pvf;
+
+select -r square.vtxFace[4][1];
+polyColorPerVertex -rgb 1 0 1;
+
+select -r square.vtxFace["*"]["*"];
+polyColorPerVertex -q -r -g -b -a;
+// Result: 0 0 0 1 0 0 0 1 1 1 0 1 1 1 0 1 1 1 0 1 1 1 0 1 1 1 0 1 1 0 1 1 // 
+
+select -r square.vtx["*"];
+polyColorPerVertex -q -r -g -b -a;
+// Result: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0.5 0.5 1 0 0 0 0 // 
