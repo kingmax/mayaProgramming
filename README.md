@@ -20,6 +20,7 @@ git status
 ls
 END
 ----------------------------------------
-git config --global user.name "jason.lee"
+git config --global user.name "iJasonLee"
 git config --global user.email "kingmax_res@163.com;184327932@qq.com"
 
+to testing name info..
