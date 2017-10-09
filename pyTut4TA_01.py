@@ -14,13 +14,29 @@
 	f.control flow (if elif else, for i in range(5), pass, break, continue)
 """
 
-print('Hello, Welcom to Python World!')
+#print('Hello, Welcom to Python World!')
 
 import os
 
-the_file = r'D:\git\mayaProgramming\bmw.jpg'
+import pyTut4TA_02
+
+pyTut4TA_02.main()
+
+pyTut4TA_02.function1(arg1)
+help
+
+
+the_file = r'D:\git\mayaProgramming\bmw2.jpg'
 
 if os.path.exists(the_file):
     print('Yes, the file does exists!')
 else:
     print('No, the file does not exists!')
+    
+   
+try:    
+    open('c:/abc.txt')
+except:
+    pass
+    
+    

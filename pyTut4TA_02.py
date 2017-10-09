@@ -15,6 +15,7 @@
 import sys
 import os
 
+
 #----------------------------------------------------------------------
 def info():
     """print python version"""
@@ -49,6 +50,9 @@ def main():
         get_files(os.path.curdir)
 
 
+    
+
 #----------------------------------------------------------------------
 if __name__ == '__main__':
+    #print(sys.argv)
     main()
