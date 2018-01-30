@@ -1,0 +1,141 @@
+Maya Dev Resources: (Maya Help CHS Download)
+-------------------
+Maya2014::
+
+Maya 模块路径、文件夹和版本:
+http://download.autodesk.com/global/docs/maya2014/zh_cn/index.html?url=files/WN_Maya.htm,topicNumber=d30e6977
+
+通过创建插件模块可以创建插件的分布式安装，此安装可保存在本地或任意网络位置。这样就不需要向 Maya 安装或其他难以管理的位置写入文件。通过模块文件，您可以轻松更改模块的分布，例如将安装的许多插件的位置重定向到其他脚本文件夹。 
+
+Maya 允许您拥有插件的多个版本并根据您的操作系统、Maya 版本和语言设置加载不同的版本。 
+
+ 
+模块文件夹结构 
+
+在模块文件中，指定模块的位置。此位置可以指定为绝对路径或相对于所读取的 .mod 文件位置的路径。 
+
+模块文件夹结构可以使用语法 <要覆盖的文件夹>: <此文件夹的新位置> 来覆盖。 
+
+例如，要为模块的脚本文件夹指定一个新位置，请添加下列行： 
+
+ scripts: ../commonModuleFiles/scripts 
+
+这可以成为在模块之间共享脚本/图标/预设文件的有用机制。 
+
+
+重要信息指定脚本文件夹的路径时，必须在 scripts: 后添加一个空格，例如 scripts: c:\myScripts。 
+
+ 
+示例 
+
+模块和脚本文件的位置： 
+• C:\CustomModule\Modules\win64 
+• C:\CustomModule\Modules\mac 
+• C:\CustomModule\CommonFiles\scripts 
+
+mod 文件的位置： 
+• C:\ModulesMOD\CustomModule.mod 
+
+.mod 文件将包含以下行： 
+
+ + PLATFORM:win64 CustomModule 3.10.5 ..\CustomModule\Modules\win64 
+
+ scripts: ..\..\CommonFiles\scripts 
+
+第一行中使用了一个相对路径，指定了相对于 mod 文件位置 (C:\ModulesMOD\CustomModule.mod) 模块的位置。在第二行中，使用了一个相对路径来指定相对于模块位置 (..\CustomModule\Modules\win64) 脚本文件夹的位置。 
+
+ 
+模块文件夹的子文件夹 
+
+ 默认情况下，Maya 将忽略一个模块中包含的所有子文件夹。为了使 Maya 考虑模块的子文件夹，必须使用 [r] 关键字为该文件夹请求递归行为；例如，如下所示： 
+
+[r] scripts: ..\..\CommonFiles\scripts
+即使设置了 [r] 关键字，也会忽略 .folder（即，以“.”开头的文件夹，又称为隐藏文件夹）。该文件夹不会递归地进行解析，也不会作为搜索路径添加到 Maya 中。 
+ 
+指定加载模块所需的条件 
+
+您可以指定该模块将在哪些条件下加载。在以下条件中选择： 
+ •Maya 版本 
+•操作系统 
+•系统区域设置 
+
+支持以下操作系统条件： 
+•平台：win64 
+•平台：mac 
+•平台：linux 
+
+
+对于系统区域设置，支持以下条件： 
+•LOCALE:en_US(用于英语(美国)) 
+•LOCALE:ja_JP（用于日语） 
+•LOCALE:zh_CN（用于简体中文） 
+
+
+使用 MAYAVERSION: 指示 Maya 版本。 
+
+
+重要信息您必须在 + 和模块名称之间指定条件。 
+
+ 
+示例 
+
+ + MAYAVERSION:2014 PLATFORM:win64 LOCALE:ja_JP CustomModule 3.10.5 ..\CustomModule\Modules\win64 
+
+在此示例中，仅会在系统区域设置为日语的 WIN 64 位操作系统下为 Maya 2014 加载 CustomModule 插件。 
+
+ 
+环境变量 
+
+您可以使用以下语法设置自定义环境变量： 
+
+MYVAR=MYVALUE 
+
+也可以使用相对于模块位置的值指定环境变量值。要执行此操作，请使用“: =”语法。 
+
+ 
+示例 
+
+在上面的示例中，如果您希望将 PYTHONPATH 设置为 C:\CustomModule\Modules\win64\python，您可以直接设置： 
+
+PYTHONPATH:=python 
+
+ 
+附加到变量的当前值 
+
+您可以使用 + 和/或 : 操作符附加到变量的当前值。示例如下： 
+
+PATH += c:/myModule/bin 会将 ;c:/myModule/bin 添加到环境变量 PATH 的当前值。 
+
+PATH +:= bin 会将 ;’module location’/bin 添加到环境变量 PATH 的当前值。 
+
+ 
+获取模块路径 
+
+要查询模块路径，请使用 MEL 命令 getModulePath，如下所示： 
+
+ getModulePath –moduleName“MyModule” 
+
+此查询将返回：c:\MyModule。 
+
+ 
+已知限制 
+
+不支持以下文件夹类型作为合法模块资源路径，任何使用以下扩展名命名的文件夹都将被模块系统忽略： 
+ • .so 
+• .mll 
+• .bundle 
+• .py 
+• .dll 
+• .framework 
+• .plugin 
+• .plist 
+• .app 
+• .pkg 
+• .rtfd 
+• .download 
+• .sparsebundle 
+---------------------------------------
+
+
+Maya2015 New ShaderFX::
+http://help.autodesk.com/view/MAYAUL/2015/CHS/?guid=GUID-EBC6DF48-857D-4230-9D3C-0B04DAF58403

@@ -1,0 +1,52 @@
+0.需要Qt.py, 编译ui文件调用的Maya自带pyside2uic(pysideuic) [Maya Version >= 2014]
+
+1.使用Qt Designer设计UI, 存为xxx.ui文件, 如myGUI.ui 	(通过这种方式而不是手写ui似乎更容易处理多语言ui问题)
+2.使用ui2py_maya2014_2018.py编译xxx.ui为xxx_ui.py文件 	(该脚本自动处理输出py文件名,如myGUI_ui.py)
+3.使用Qt.py --convert xxx_ui.py后处理 	(为了兼容各种版本,PySide2, PyQt5, PySide, PyQt4, 会自动备份源文件为xxx_ui_backup.py)
+4.新建MainWindow类继承xxx_ui.Ui_Form...	(详见ui_Test.py)
+
+(2个较好的参考为:cosmos,medic)
+
+另外对于有多个版本的,如装了PyQt4,又有自带的PySide的,可能发生报错找不到正确的绑定,可以通过以下2种方式解决:(Maya2014中发现存在这问题)
+1.直接在代码里指定首选绑定:
+import os
+os.environ['QT_PREFERRED_BINDING'] = 'PySide'
+2.或许可以通过.mod文件添加:(尚未测试)
+QT_PREFERRED_BINDING=PySide2
+
+-----------------------------附:Maya内置Python版本
+
+maya版本	  python版本		pyQt版本		PySide版本
+
+maya 2011		2.6.4			4.5.3					
+
+maya 2012		2.6.4			4.7.1			
+
+maya 2013		2.6.4			4.7.1  
+
+maya 2014		2.7.3			4.8.2			1.1.1	
+
+maya 2015		2.7.3			4.8.5			1.2				
+
+maya 2016		2.7.6			4.8.6			1.2.0
+
+maya 2016.5		2.7.6			4.8.6
+
+maya 2017		2.7.11			5.6.1			2.0.0~alpha0	
+
+
+---查询python版本---
+import maya.cmds as py
+import sys
+
+ver=sys.version
+print ver
+---查询pyQt版本-------
+import PyQt4.QtCore as QtCore
+QtCore.PYQT_VERSION_STR
+QtCore.QT_VERSION_STR
+ 
+# get the current running Qt version
+print QtCore.qVersion()
+---
+参考：https://ilmvfx.wordpress.com/2012/11/12/precompiled-pyqt-for-maya-2009-201x/

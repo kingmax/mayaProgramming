@@ -1,0 +1,19 @@
+#!wing
+#!version=6.0
+##################################################################
+# Wing IDE project file                                          #
+##################################################################
+[project attributes]
+proj.directory-list = [{'dirloc': loc('.'),
+                        'excludes': (),
+                        'filter': u'*',
+                        'include_hidden': False,
+                        'recursive': True,
+                        'watch_for_changes': True}]
+proj.file-type = 'shared'
+proj.launch-config = {loc('scriptsTesting/Qt.py'): ('project',
+        (u'--convert myGUI_ui.py',
+         '')),
+                      loc('ui2py_maya2014_2018.py'): ('project',
+        (u'scriptsTesting/myGUI.ui',
+         ''))}
