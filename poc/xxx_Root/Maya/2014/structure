@@ -1,0 +1,36 @@
+MAYA_VERSION
+	+ docs	(help files)
+	+ icons	(32x32 png icons)
+	+ modules
+		+ xxx.mod (point to ../plug-ins/xxx)
+	+ plug-ins
+		+ xxx
+			+ bin
+			+ docs
+			+ icons
+			+ plug-ins
+			+ scripts
+			+ ...
+	+ prefs		(if no shelf need, delete this folder or empty folder)
+		+ shelves
+			+ xxx_shelf.mel
+	+ scripts
+		+ xx.mel
+		+ xx.py (single py module)
+		+ xSubDir (py package)
+		+ (may has userScripts.py & userScripts.mel, but not use it!)
+	
+
+
+	
+	
+------------------------- Maya vars for set env
+MAYA_UI_LANGUAGE
+
+MAYA_SHELF_PATH 	(MUST BEFORE MAYA_SCRIPT_PATH)
+
+MAYA_PLUG_IN_PATH
+MAYA_MODULE_PATH
+MAYA_SCRIPT_PATH
+XBMLANGPATH			(ICONS)
+PYTHONPATH			(SCRIPTS)
