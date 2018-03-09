@@ -12,26 +12,21 @@ global proc shelf_xxx () {
         -manage 1
         -visible 1
         -preventOverride 0
-        -annotation "import xxSinglePyModule\nreload(xxSinglePyModule)\nxxSinglePyModule.main()" 
+        -annotation "#coding:utf-8\nimport xxSinglePyModule\nreload(xxSinglePyModule)\nxxSinglePyModule.main()" 
         -enableBackground 0
-        -highlightColor 0.321569 0.521569 0.65098 
         -align "center" 
-        -label "import xxSinglePyModule\nreload(xxSinglePyModule)\nxxSinglePyModul..." 
+        -label "#coding:utf-8\nimport xxSinglePyModule\nreload(xxSinglePyModule)\nx..." 
         -labelOffset 0
-        -rotation 0
-        -flipX 0
-        -flipY 0
-        -useAlpha 1
         -font "plainLabelFont" 
         -imageOverlayLabel "win" 
         -overlayLabelColor 0.8 0.8 0.8 
-        -overlayLabelBackColor 0 0 0 0.5 
+        -overlayLabelBackColor 0 0 0 0.2 
         -image "pythonFamily.png" 
         -image1 "pythonFamily.png" 
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import xxSinglePyModule\nreload(xxSinglePyModule)\nxxSinglePyModule.main()" 
+        -command "#coding:utf-8\nimport xxSinglePyModule\nreload(xxSinglePyModule)\nxxSinglePyModule.main()" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1

@@ -1,3 +1,4 @@
 
+from userSetup.py:: PySide2;PySide
 mental ray for Maya 2014 
 mental ray: version 3.11.1.13, Sep 12 2013, revision 204885
