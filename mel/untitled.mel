@@ -9,5 +9,9 @@ global proc float[] transformPoint(float $pt[], float $mtx[])
 		return  $res;
 	}
 	
+	$res[0] = $pt[0] * $mtx[0] + $pt[1] * $mtx[4] + $pt[2] * $mtx[8] + $mtx[12];
+	$res[1] = $pt[0] * $mtx[1] + $pt[1] * $mtx[5] + $pt[2] * $mtx[9] + $mtx[13];
+	$res[2] = $pt[0] * $mtx[2] + $pt[1] * $mtx[6] + $pt[2] * $mtx[10]+ $mtx[14];
+	
 	return $res;
 }
