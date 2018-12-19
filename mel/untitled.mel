@@ -1,0 +1,12 @@
+proc listAll()
+{
+	print("\nNodes...");
+	string $nodes[] = `ls`;
+	for($node in $nodes)
+	{
+		string $nodeType = `objectType $node`;
+		print("\nNode: " + $node + " (" + $nodeType + ")");
+	}
+}
+
+listAll();

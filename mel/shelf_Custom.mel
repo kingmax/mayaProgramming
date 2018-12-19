@@ -1,0 +1,41 @@
+global proc shelf_Custom () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "string $scriptsPath = `internalVar -userScriptDir`;\nchdir $scriptsPath;\nsystem(\"start notepad++.exe learning.mel\");" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "string $scriptsPath = `internalVar -userScriptDir`;\nchdir $scrip..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "6Mel" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "commandButton.png" 
+        -image1 "commandButton.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "string $scriptsPath = \"D:\\\\git\\\\mayaProgramming\\\\mel\"; //`internalVar -userScriptDir`;\nchdir $scriptsPath;\nsystem(\"start \\\"C:\\\\Program Files (x86)\\\\Notepad++\\\\notepad++.exe\\\" untitled.mel\");\n\n//putenv \"MAYA_SCRIPT_PATH\" $scriptsPath;\n//internalVar -usd;\n//getenv \"MAYA_SCRIPT_PATH\";\n//rehash();\nsource \"untitled.mel\";\n//listAll();" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+} 
