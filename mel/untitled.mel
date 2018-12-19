@@ -1,0 +1,6 @@
+global proc float[] transformPoint(float $pt[], float $mtx[])
+{
+	float $res[] = {0.0, 0.0, 0.0};
+	
+	return $res;
+}
