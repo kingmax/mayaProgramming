@@ -2,5 +2,12 @@ global proc float[] transformPoint(float $pt[], float $mtx[])
 {
 	float $res[] = {0.0, 0.0, 0.0};
 	
+	if(size($pt) != 3 && size($mtx) != 16)
+	{
+		warning "transformPoint proc: pt must have three elements and 
+		matrix must have 16 elements";
+		return  $res;
+	}
+	
 	return $res;
 }
