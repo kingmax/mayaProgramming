@@ -1,4 +1,4 @@
-proc listAll()
+global proc listAll()
 {
 	print("\nNodes...");
 	string $nodes[] = `ls`;
@@ -9,4 +9,4 @@ proc listAll()
 	}
 }
 
-listAll();
+//listAll();
