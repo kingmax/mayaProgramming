@@ -1,0 +1,14 @@
+{
+	string $pluginFile = "D:/git/cppMaya/MayaPlugins/x64/Release/HelloMaya.mll";
+	if(`pluginInfo -query -loaded $pluginFile` && 
+		!`pluginInfo -query -unloadOk $pluginFile`)
+		file -f -new;
+	unloadPlugin HelloMaya.mll;
+}
+
+{
+    string $pluginFile = "D:/git/cppMaya/MayaPlugins/x64/Release/HelloMaya.mll";
+    loadPlugin $pluginFile;
+}
+
+HelloMaya;
