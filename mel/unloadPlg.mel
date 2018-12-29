@@ -12,3 +12,14 @@
 }
 
 HelloMaya;
+
+
+string $dir="D:\\git\\cppMaya\\MayaPlugins\\x64\\Release";
+string $nam="posts1.mll";
+$plg = $dir + "\\" + $nam;
+if(`pluginInfo -q -loaded $plg` && !`pluginInfo -q -unloadOk $plg`)
+    file -f -new;
+unloadPlugin $nam;
+loadPlugin $plg;
+
+posts1;
