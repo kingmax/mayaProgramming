@@ -1,0 +1,7 @@
+user.name=kingmax
+user.email=kingmax_res@163.com
+filter.lfs.required=true
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+credential.helper=wincred
