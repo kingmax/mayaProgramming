@@ -1,0 +1,13 @@
+# VS locked or others
+**/.vs/*
+*.opendb
+**/Debug/*
+# **/Release/*
+*.exp
+*.iobj
+*.ipdb
+*.lib
+*.pdb
+*.log
+*.tlog
+*.db
