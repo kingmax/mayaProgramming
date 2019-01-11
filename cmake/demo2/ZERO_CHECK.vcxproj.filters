@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\git\mayaProgramming\cmake\demo2\CMakeFiles\6697d81a7c5fcc2a14680aed3ad10029\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{EE75432B-A3D8-34D4-BB8F-BFFE17864545}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
