@@ -11,3 +11,7 @@
 *.log
 *.tlog
 *.db
+
+**/CMakeFiles/*
+**/*.dir/*
+**/Win32/*
