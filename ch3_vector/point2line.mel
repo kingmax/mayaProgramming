@@ -1,0 +1,12 @@
+//calculate vector(point) perpendicular to line(pointB-pointA)
+vector $p = `xform -q -translation -ws pSphere1.vtx[275]`;
+vector $p0 = `xform -q -t -ws pSphere1.vtx[255]`;
+vector $p1 = `xform -q -t -ws pSphere1.vtx[256]`;
+
+vector $a = $p - $p0;
+vector $b = unit($p1 - $p0);
+vector $c = dot($a, $b) * $b;
+vector $d = $a - $c;
+mag($p1 - $p0);
+float $dist = mag($d);
+print $dist;
