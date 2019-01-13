@@ -1,0 +1,8 @@
+angleBetween -v1 1 0 0 -v2 0 1 0;
+// 结果: 0 0 1 90 // 
+
+vector $p = <<1, 0, 0>>;
+vector $rotAxis = << 0, 0, 1>>;
+float $rotAngle = deg_to_rad(90)
+rot $p $rotAxis $rotAngle;
+// 结果: <<2.26795e-07, 1, 0>>  // <<0, 1, 0>>
