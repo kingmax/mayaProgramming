@@ -22,7 +22,15 @@ for i in range(selectionList.length()):
     math.degrees(eulerRot.y)
     angles = [math.degrees(angle) for angle in (eulerRot.x, eulerRot.y, eulerRot.z)]
     print(angles, "MTransformationMatrix")
+    
+    # set the absolute rotation
+    rot = om.MEulerRotation(0, math.radians(30), 0)
+    transformFn.setRotation(rot)
+    # add a relative rotation
+    rotOffset = om.MEulerRotation(0, math.radians(15), 0)
+    transformFn.rotateBy(rotOffset)
 
+# 
 
 '''
 from maya import OpenMaya as om
