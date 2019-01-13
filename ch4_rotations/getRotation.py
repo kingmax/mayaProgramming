@@ -1,4 +1,31 @@
 from maya import OpenMaya as om
+import math
+
+dagPath = om.MDagPath()
+selectionList = om.MSelectionList()
+om.MGlobal.getActiveSelectionList(selectionList)
+
+for i in range(selectionList.length()):
+    selectionList.getDagPath(i, dagPath)
+    print(dagPath.fullPathName())
+    
+    transformFn = om.MFnTransform(dagPath)
+    stat = 0
+    er = om.MEulerRotation()
+    transformFn.getRotation(er)
+    print('rotation: %s, %s, %s, order:%s'%(er.x, er.y, er.z, er.order))
+    
+    # another method, ref: https://www.akeric.com/blog/?p=1067
+    matrix = transformFn.transformation()
+    eulerRot = matrix.eulerRotation()
+    print(eulerRot.y)
+    math.degrees(eulerRot.y)
+    angles = [math.degrees(angle) for angle in (eulerRot.x, eulerRot.y, eulerRot.z)]
+    print(angles, "MTransformationMatrix")
+
+
+'''
+from maya import OpenMaya as om
 
 selList = om.MSelectionList()
 om.MGlobal.getActiveSelectionList(selList)
@@ -11,4 +38,4 @@ for i in range(selList.length()):
     er = om.MEulerRotation()
     transformFn.getRotation(er)
     print('rotation: %s, %s, %s, order:%s'%(er.x, er.y, er.z, er.order))
-
+'''
