@@ -1,0 +1,17 @@
+//query transformation
+xform -q -translation;
+xform -q -ws -t;
+
+xform -q -relative -scale;
+xform -q -r -s;
+xform -q -r -shear;
+
+xform -q -rotation;
+xform -q -rotateAxis;
+xform -q -rotateOrder;
+
+xform -q -scalePivot;
+xform -q -rotatePivot;
+
+xform -q -matrix;
+xform -q -ws -m;
