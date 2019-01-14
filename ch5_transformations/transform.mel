@@ -14,5 +14,40 @@ pointMatrixMult($pt, $mt);
 // custom version Point * Matrix
 proc float[] transformPoint(float $p[], float $m[])
 {
-    flaot
+    float $r[4];
+    $r[0] = $p[0] * $m[0] + $p[1] * $m[4] + $p[2] * $m[8] + $m[12];
+    $r[1] = $p[0] * $m[1] + $p[1] * $m[5] + $p[2] * $m[9] + $m[13];
+    $r[2] = $p[0] * $m[2] + $p[1] * $m[6] + $p[2] * $m[10] + $m[14];
+    $r[3] = $p[0] * $m[3] + $p[1] * $m[7] + $p[2] * $m[11] + $m[15];
+    
+    float $ret[3] = {$r[0], $r[1], $r[2]};//{0,0,0};
+    if($r[3] != 0.0)
+    {
+        int $i;
+        for($i=0; $i<size($ret); $i++)
+        {
+            //$ret[$i] = $r[$i] / $r[3];
+            $ret[$i] /= $r[3];
+        }
+    }
+    else
+    {
+        /*
+        int $i;
+        for($i=0; $i<size($ret); $i++)
+        {
+            $ret[$i] = $r[$i];
+        }
+        */
+    }
+    
+    return $ret;
 }
+
+transformPoint($pt, $mt);
+// Result: 1 4 9 // 
+
+// vector
+float $m[] = `getAttr pCube1.matrix`;
+vector $v = <<1, 0, 0>>;
+vector $v2 = transformPoint($v, $m);
