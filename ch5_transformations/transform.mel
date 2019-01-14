@@ -1,0 +1,18 @@
+whatIs pointMatrixMult;
+// Result: Mel procedure found in: C:/Program Files/Autodesk/Maya2018/scripts/others/pointMatrixMult.mel // 
+vector $p = <<1, 0, 0>>;
+matrix $mat[4][4];
+identity($mat);
+print($mat);
+pointMatrixMult $p $mat;    // ERROR
+
+float $pt[] = {1, 2, 3};
+float $mt[] = {1,0,0,0, 0,2,0,0, 0,0,3,0, 0,0,0,0};
+pointMatrixMult($pt, $mt);
+// Result: 1 4 9 //
+
+// custom version Point * Matrix
+proc float[] transformPoint(float $p[], float $m[])
+{
+    flaot
+}
