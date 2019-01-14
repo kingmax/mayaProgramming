@@ -1,0 +1,5 @@
+xform -query -rotation pCube1;
+currentUnit -query -angle;
+xform -rotation 0 45 0 pCube1;
+xform -relative -rotation 0 15 0 pCube1;
+angleBetween -euler -v1 1 0 0 -v2 0 1 0; // Result: 0 0 90 // 

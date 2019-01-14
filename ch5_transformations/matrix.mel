@@ -1,0 +1,58 @@
+// matrics
+matrix $mat[4][4];
+print($mat);
+/*
+<< 0, 0, 0, 0;
+   0, 0, 0, 0;
+   0, 0, 0, 0;
+   0, 0, 0, 0>>
+*/
+
+proc identity(matrix $mat)
+{
+   int $i, $j;
+   for($i=0; $i<4; $i++)
+   {
+       for($j=0; $j<4; $j++)
+       {
+           if($i == $j)
+               $mat[$i][$j] = 1.0;
+           else
+               $mat[$i][$j] = 0.0;
+       }
+   }
+}
+
+identity($mat);
+print($mat);
+/*
+<< 1, 0, 0, 0;
+   0, 1, 0, 0;
+   0, 0, 1, 0;
+   0, 0, 0, 1>>
+*/
+
+getAttr pCube1.matrix;
+// Result: 0.5 0 -0.866025 0 0 1 0 0 0.866025 0 0.5 0 0 0 0 1 // 
+
+proc matrix convertToMatrix(float $arr[])
+{
+    matrix $mat[4][4];
+    int $i, $ii, $jj;
+    for($i = 0; $i < 16; $i++)
+    {
+        $ii = $i / 4;
+        $jj = $i % 4;
+        $mat[$ii][$jj] = $arr[$i];
+    }
+    return $mat;
+}
+
+$mat = convertToMatrix(`getAttr pCube1.matrix`);
+print($mat);
+/*
+<< 0.5, 0, -0.866025, 0;
+   0, 1, 0, 0;
+   0.866025, 0, 0.5, 0;
+   0, 0, 0, 1>>
+*/
