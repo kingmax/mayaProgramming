@@ -22,4 +22,27 @@ while not iter.isDone():
     sy = om.MScriptUtil().getDoubleArrayItem(scaleDoubleArrayPtr, 1)
     sz = om.MScriptUtil().getDoubleArrayItem(scaleDoubleArrayPtr, 2)
     print(sx, sy, sz)
+    
+    transformFn.getShear(scaleDoubleArrayPtr)
+    x = om.MScriptUtil().getDoubleArrayItem(scaleDoubleArrayPtr, 0)
+    y = om.MScriptUtil().getDoubleArrayItem(scaleDoubleArrayPtr, 1)
+    z = om.MScriptUtil().getDoubleArrayItem(scaleDoubleArrayPtr, 2)
+    print(x, y, z)
+    
+    quaternion = om.MQuaternion()
+    transformFn.getRotation(quaternion)
+    print(quaternion.x, quaternion.y, quaternion.z, quaternion.w)
+    
+    euler = om.MEulerRotation()
+    transformFn.getRotation(euler)
+    print(euler.x, euler.y, euler.z)
+    
+    # ERROR, maybe only in C++? because the RotationOrder is Enum in MTransformationMatrix class
+    # order = om.MTransformationMatrix.RotationOrder() 
+    # transformFn.getRotation(scaleDoubleArrayPtr, order)
+    
+    vector = om.MVector()
+    vector = transformFn.translation(om.MSpace.kTransform)
+    print(vector.x, vector.y, vector.z)
+    
     iter.next()
