@@ -1,0 +1,15 @@
+// set transformation
+xform -translation 2 3 4;
+
+xform -q -t pCube1;
+xform -q -piv pCube1;
+
+xform -q -t -ws pCube1;
+xform -q -piv pCube1;
+xform -q -ws -t pCube1.scalePivot;
+
+objectCenter pCube1;
+// Result: 2.5 2.5 4.5 // 
+xform -ws -piv 2.5 2.5 4.5;
+
+// Page 111
