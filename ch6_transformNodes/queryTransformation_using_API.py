@@ -45,4 +45,26 @@ while not iter.isDone():
     vector = transformFn.translation(om.MSpace.kTransform)
     print(vector.x, vector.y, vector.z)
     
+    ror = om.MQuaternion()
+    ror = transformFn.rotateOrientation(om.MSpace.kTransform)
+    print(ror.x, ror.y, ror.z, ror.w)
+    
+    # om.MTransformztionMatrix.RotationOrder
+    order = transformFn.rotationOrder()
+    print(order)
+    # Result: 1 # 
+    
+    sp = transformFn.scalePivot(om.MSpace.kTransform)
+    rp = transformFn.rotatePivot(om.MSpace.kTransform)
+    print((sp.x, sp.y, sp.z), (rp.x, rp.y, rp.z))
+    
+    # scale and rotation pivot point translation
+    spt = transformFn.scalePivotTranslation(om.MSpace.kTransform)
+    rpt = transformFn.rotatePivotTranslation(om.MSpace.kTransform)
+    print((spt.x, spt.y, spt.z), (rpt.x, rpt.y, rpt.z))
+    
+    # MTransformationMatrix
+    tx = transformFn.transformation()
+    print(tx)
+    
     iter.next()
