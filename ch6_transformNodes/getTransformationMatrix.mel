@@ -1,0 +1,10 @@
+//get object to world space transformation matrix
+xform -q -ws -matrix;
+getAttr |pCube1.worldMatrix;
+
+//get world to object matrix (inverse object2world matrix)
+getAttr |pCube1.worldInverseMatrix;
+
+//get object2world parent maxtrix
+getAttr |pCube1.parentMatrix;
+getAttr |pCube1.parentInverseMatrix;
