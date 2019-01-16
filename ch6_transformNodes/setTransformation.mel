@@ -13,3 +13,13 @@ objectCenter pCube1;
 xform -ws -piv 2.5 2.5 4.5;
 
 // Page 111
+xform -t 2 3 4;
+xform -relative -t 1 0 0;
+xform -ws -t 4 3 1;
+// move the object in local space
+move -relative -localSpace 1 0 0;
+xform -rotation 10 30 50;
+xform -scale 0.8 0.9 1;
+
+makeIdentity -apply false;
+makeIdentity -apply true;
