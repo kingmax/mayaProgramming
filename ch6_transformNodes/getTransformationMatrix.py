@@ -12,6 +12,7 @@ while not it.isDone():
         dagPath = it.getDagPath()
         print(dagPath.fullPathName())
         
+        # using MDagPath
         obj2ws = dagPath.inclusiveMatrix()
         print('object to world:')
         print(obj2ws)
@@ -35,6 +36,15 @@ while not it.isDone():
             mParentWS2Obj = dagPath.exclusiveMatrixInverse()
             matrix = mObj2WS * mParentWS2Obj
             print(matrix)
+            # using MFnDagNode
+            dagFn = om.MFnDagNode(dagPath)
+            mat = dagFn.transformationMatrix()
+            print(mat)
+            # using MFnTransform
+            transformFn = om.MFnTransform(dagPath)
+            tm = transformFn.transformation()
+            mat = tm.asMatrix()
+            print(mat)        
     except:
         pass
     print('\r\n')
