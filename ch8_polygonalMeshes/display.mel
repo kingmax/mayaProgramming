@@ -31,3 +31,25 @@ polyOptions -point -displayNormal true;
 //Back-face culling
 polyOptions -fullBack;
 polyOptions -backCullVertex false;
+polyOptions -wireBackCulling;
+polyOptions -backCulling; //reset
+
+//UV
+polyOptions -displayUVs true;
+polyOptions -displayMapBorder true;
+polyOptions -displayUVTopology true;
+
+//VertexColor
+polyOptions -colorShadedDisplay true;
+polyOptions -q -colorMaterialChannel; // Result: ambientDiffuse // 
+polyOptions -colorMaterialChannel "none";
+
+select -r box.vtx[3];
+polyColorPerVertex -rgb 1 1 0;
+
+// Nonplanar faces
+select -r box.vtx[3];
+move -r .5 .5 .5;
+select -r box;
+
+polyOptions -displayWarp true;

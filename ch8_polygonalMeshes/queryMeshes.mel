@@ -1,0 +1,50 @@
+// query meshes, _basicPolygon
+polyEvaluate -vertex; // Result: 4 // 
+
+proc printVertex(string $obj)
+{
+    int $res[] = `polyEvaluate -vertex`;
+    int $nVerts = $res[0];
+    float $pos[3];
+    int $i;
+    for($i = 0; $i < $nVerts; $i++)
+    {
+        $pos = `getAttr $obj.vrts[$i]`;
+        print($pos[0] + ", " + $pos[1] + ", " + $pos[2] + "\n");
+    }
+}
+printVertex("square");
+
+proc printVertex2(string $obj)
+{
+    float $coords[] = `getAttr $obj.vrts["*"]`;
+    int $nVerts = size($coords) / 3;
+    int $i;
+    //for($i = 0; $i < $nVerts; $i++)
+    for($i = 0; $i < size($coords); $i += 3)
+    {
+        print($coords[$i] + ", " + $coords[$i+1] + ", " + $coords[$i+2] + "\n");
+    }
+}
+printVertex2("square");
+
+
+print `pointPosition -local square.vtx[0]`;
+print `pointPosition -world square.vtx[0]`;
+setAttr square.translateY 3.0;
+print `pointPosition -local square.vtx[0]`;
+print `pointPosition -world square.vtx[0]`;
+
+proc printVertex3(string $obj)
+{
+    int $res[] = `polyEvaluate -vertex`;
+    int $nVerts = $res[0];
+    float $pos[3];
+    int $i;
+    for($i = 0; $i < $nVerts; $i++)
+    {
+        $pos = `pointPosition -world ($obj + ".vtx[" + $i +"]")`;
+        print($pos[0] + ", " + $pos[1] + ", " + $pos[2] + "\n");
+    }
+}
+printVertex3("square");
