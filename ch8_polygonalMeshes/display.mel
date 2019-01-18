@@ -1,0 +1,33 @@
+//_boxMeshes
+polyOptions -activeObjects -displayTriangle true;
+polyOptions -displayTriangle false;
+
+polyOptions -global -displayTriangle true;
+polyCube;
+undo;
+polyOptions -newPolymesh -displayTriangle true;
+polyCube;
+polyOptions -newPolymesh -displayTriangle false;
+
+//_boxMesh
+polyOptions -displayVertex true;
+polyOptions -displayGeometry false;
+polyOptions -relative -displayGeometry true;    //toggle
+
+polyOptions -displayCenter true;
+polyOptions -displayTriangle true;
+polyOptions -displayBorder true;
+polyOptions -q -sizeBorder; // Result: 2 // 
+polyOptions -relative -sizeBorder 0.5;
+
+polyOptions -displayItemNumbers true false false false; // vertices, edges, faces, uvs
+
+//Normals
+polyOptions -displayNormal true;
+polyOptions -q -sizeNormal; // Result: 0.4 // 
+polyOptions -sizeNormal .25;
+polyOptions -point -displayNormal true;
+
+//Back-face culling
+polyOptions -fullBack;
+polyOptions -backCullVertex false;
