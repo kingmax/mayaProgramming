@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VertexInfo", "MeshInfo1.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EdgeInfo", "..\EdgeInfo\EdgeInfo.vcxproj", "{0AA60BE2-47B2-4A4B-85F9-5A3B002E3AA8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FaceInfo", "..\FaceInfo\FaceInfo.vcxproj", "{738C4B49-94E6-4E54-92C8-8D3D8525D1B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{0AA60BE2-47B2-4A4B-85F9-5A3B002E3AA8}.Release|x64.Build.0 = Release|x64
 		{0AA60BE2-47B2-4A4B-85F9-5A3B002E3AA8}.Release|x86.ActiveCfg = Release|Win32
 		{0AA60BE2-47B2-4A4B-85F9-5A3B002E3AA8}.Release|x86.Build.0 = Release|Win32
+		{738C4B49-94E6-4E54-92C8-8D3D8525D1B5}.Debug|x64.ActiveCfg = Debug|x64
+		{738C4B49-94E6-4E54-92C8-8D3D8525D1B5}.Debug|x64.Build.0 = Debug|x64
+		{738C4B49-94E6-4E54-92C8-8D3D8525D1B5}.Debug|x86.ActiveCfg = Debug|Win32
+		{738C4B49-94E6-4E54-92C8-8D3D8525D1B5}.Debug|x86.Build.0 = Debug|Win32
+		{738C4B49-94E6-4E54-92C8-8D3D8525D1B5}.Release|x64.ActiveCfg = Release|x64
+		{738C4B49-94E6-4E54-92C8-8D3D8525D1B5}.Release|x64.Build.0 = Release|x64
+		{738C4B49-94E6-4E54-92C8-8D3D8525D1B5}.Release|x86.ActiveCfg = Release|Win32
+		{738C4B49-94E6-4E54-92C8-8D3D8525D1B5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

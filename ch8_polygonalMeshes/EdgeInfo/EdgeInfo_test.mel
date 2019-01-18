@@ -1,8 +1,19 @@
-//_basicPolygon.ma
+//_twoPolygon.ma
 loadPlugin "D:\\git\\mayaProgramming\\Release\\EdgeInfo.mll"
 
 select -r square;
 EdgeInfo;
 
 select -r square.e[1];
+EdgeInfo;
+
+select -r square.vtx[0];
+EdgeInfo;
+// Warning: |square|squareShape
+//# Edges: 2
+//Edge 0: 0 (-7.502505, 0, -2.216298)1 (-5.002505, 0, -2.216298)
+//Edge 1: 0 (-7.502505, 0, -2.216298)3 (-7.502505, 0, -7.216298)
+// 
+
+select -r square.f[0];
 EdgeInfo;

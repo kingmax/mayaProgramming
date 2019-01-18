@@ -1,0 +1,9 @@
+//_twoPolygonMesh.ma
+loadPlugin "D:\\git\\mayaProgramming\\Release\\FaceInfo.mll";
+
+select -r square;
+FaceInfo;
+
+select -r square.f[1];
+FaceInfo;
+

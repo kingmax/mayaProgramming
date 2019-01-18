@@ -1,5 +1,5 @@
 //_basicPolygon.ma
-loadPlugin "D:\\git\\mayaProgramming\\Release\\MeshInfo1.mll"
+loadPlugin "D:\\git\\mayaProgramming\\Release\\MeshInfo1.mll";
 
 select square;
 MeshInfo1;

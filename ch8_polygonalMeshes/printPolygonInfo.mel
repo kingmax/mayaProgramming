@@ -1,0 +1,41 @@
+// print mesh polygon info(face), _twoPolygonMesh.ma
+{
+    
+    string $sel[] = `ls -long -dag -selection -geometry`;
+    int $i, $j, $k;
+    for($i = 0; $i < size($sel); $i++)
+    {
+        string $node = $sel[$i];
+        int $res[] = `polyEvaluate -face $node`;
+        int $nFaces = $res[0];
+        
+        float $pos[3];
+        int $vIndex;
+        print($node + " has " + $nFaces + " faces:\n");
+        
+        for($j = 0; $j < $nFaces; $j++)
+        {
+            string $pi[] = `polyInfo -faceToVertex ($node + ".f[" + $j + "]")`;
+            string $piParts[];
+            tokenize $pi[0] $piParts;
+            
+            print("Face " + $j + "\n");
+            print(" # Verts: " + (size($piParts)-2) + "\n");
+            
+            for($k = 2; $k < size($piParts); $k++)
+            {
+                $vIndex = $piParts[$k];
+                $pos = `pointPosition -world ($node + ".vtx[" + $vIndex + "]")`;
+                print(" " + $vIndex + ": (" + $pos[0] + ", " + $pos[1] + ", " + $pos[2] + ")\n");
+            }
+        }
+        
+        print("\n");
+    }
+    
+}
+
+polyEvaluate -f;
+polyInfo -faceToVertex square.f[0];
+// Result: FACE      0:      0      1      4      3 
+ // 
