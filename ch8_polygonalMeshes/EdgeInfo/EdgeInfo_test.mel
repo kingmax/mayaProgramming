@@ -1,0 +1,8 @@
+//_basicPolygon.ma
+loadPlugin "D:\\git\\mayaProgramming\\Release\\EdgeInfo.mll"
+
+select -r square;
+EdgeInfo;
+
+select -r square.e[1];
+EdgeInfo;

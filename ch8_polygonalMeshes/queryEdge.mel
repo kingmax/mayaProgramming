@@ -1,0 +1,32 @@
+// query edge, _basicPolygon.ma
+
+polyEvaluate -edge;
+// Result: 4 // 
+
+string $sel[] = `ls -long -dag -selection -geometry`;
+// Result: |square|squareShape // 
+int $i, $j;
+for($i = 0; $i < size($sel); $i++)
+{
+    string $node = $sel[$i];
+    int $res[] = `polyEvaluate -edge $node`;
+    int $nEdges = $res[0];
+    print($node + " has " + $nEdges + " edges:\n");
+    
+    for($j = 0; $j < $nEdges; $j++)
+    {
+        string $pi[] = `polyInfo -edgeToVertex ($node + ".e[" + $j + "]")`;
+        string $piParts[];
+        tokenize $pi[0] $piParts;
+        int $v0 = int( $piParts[2] );
+        int $v1 = int( $piParts[3] );
+        print($v0 + ", " + $v1 + "\n");
+    }
+}
+
+polyInfo -edgeToVertex square.e[0];
+// Result: EDGE      0:      0      1  Hard
+ // 
+polyInfo -edgeToVertex |square|squareShape.e[0];
+// Result: EDGE      0:      0      1  Hard
+ // 

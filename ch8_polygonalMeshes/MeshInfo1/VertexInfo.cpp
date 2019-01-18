@@ -1,3 +1,5 @@
+//print mesh vertex info
+
 #include <maya/MSimple.h>
 #include <maya/MStatus.h>
 #include <maya/MArgList.h>
