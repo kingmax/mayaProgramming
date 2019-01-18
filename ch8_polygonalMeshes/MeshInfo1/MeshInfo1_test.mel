@@ -1,0 +1,10 @@
+//_basicPolygon.ma
+loadPlugin "D:\\git\\mayaProgramming\\Release\\MeshInfo1.mll"
+
+select square;
+MeshInfo1;
+
+select -r square.vtx[1];
+MeshInfo1;
+
+select -clear;
