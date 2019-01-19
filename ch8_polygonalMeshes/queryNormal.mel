@@ -1,0 +1,43 @@
+// query normal
+
+select -r cube.f[0];
+polyInfo -faceNormals;
+// 结果: FACE_NORMAL      0: 0.000000 0.000000 1.000000
+ // 
+select -r cube.vtxFace[3][0];
+polyNormalPerVertex -q -xyz;
+// 结果: 0 0 1 // 
+select -r cube.vtx[3];
+polyNormalPerVertex -q -xyz;
+// 结果: 1 0 0 0 0 1 0 1 0 // 
+
+proc calcVertNormal(string $obj)
+{
+    string $pi[] = `polyInfo -vertexToFace $obj`;
+    string $piParts[];
+    tokenize $pi[0] $piParts;
+    int $i, $faceID;
+    vector $vNormal = 0;
+    vector $fNormal;
+    string $pi2[], $piParts2[];
+    for($i = 2; $i < size($piParts); $i++)
+    {
+        $faceID = $piParts[$i];
+        $pi2 = `polyInfo -faceNormals ($obj + ".f[" + $faceID + "]")`;
+        tokenize $pi2[0] $piParts2;
+        
+        $fNormal = << float($piParts2[2]),
+                      float($piParts2[3]),
+                      float($piParts2[4]) >>;
+        $vNormal += $fNormal;
+    }
+    $vNormal = `unit $vNormal`;
+    print $vNormal;
+}
+
+calcVertNormal("cube");
+// -0.57735 -0.57735 0.57735
+
+string $pi[] = `polyInfo -vertexToFace`;
+// 结果: VERTEX      3:      1      0      4 
+ // 
