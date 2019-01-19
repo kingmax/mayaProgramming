@@ -1,0 +1,23 @@
+loadPlugin "D:\\git\\mayaProgrammingB\\Release\\NormalInfo.mll";
+
+select -r cube.vtx[3];
+NormalInfo;
+/*
+// Object: |cube|cubeShape
+ Face: 4 Vertex: 3 Face-Vertex: 3
+ Face Normal: (1, 0, 0)
+ VertexNormal:(0.57735, 0.57735, 0.57735)
+ Face-VertexNormal:(1, 0, 0)
+ 
+ Face: 0 Vertex: 3 Face-Vertex: 2
+ Face Normal: (0, 0, 1)
+ VertexNormal:(0.57735, 0.57735, 0.57735)
+ Face-VertexNormal:(0, 0, 1)
+ 
+ Face: 1 Vertex: 3 Face-Vertex: 1
+ Face Normal: (0, 1, 0)
+ VertexNormal:(0.57735, 0.57735, 0.57735)
+ Face-VertexNormal:(0, 1, 0)
+ // 
+
+*/
