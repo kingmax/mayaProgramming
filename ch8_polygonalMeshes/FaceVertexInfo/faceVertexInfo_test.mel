@@ -1,0 +1,42 @@
+select -r square.vtxFace["*"]["*"];
+polyColorPerVertex -rgb 0 0 0;
+
+select -r square.vtx[4];
+polyColorPerVertex -rgb 1 1 0;
+select -r square.vtxFace[4][1];
+polyColorPerVertex -rgb 1 0 0;
+
+select -r square.vtxFace["*"]["*"];
+polyColorPerVertex -q -r -g -b -a;
+
+// Vert-Face Info
+loadPlugin "D:\\git\\mayaProgrammingB\\Release\\FaceVertexInfo.mll";
+select -r square.vtxFace[4][0];
+polyColorPerVertex -rgb 1 1 0;
+select -r square.vtxFace[4][1];
+polyColorPerVertex -rgb 1 0 1;
+
+select -r square.f["*"];
+FaceVertexInfo;
+/*
+// Object: |square|squareShape
+ Face 0: mesh-relative-vertexID (0), face-relative-vertexID(0)
+ Color: 0, 0,0
+ Face 0: mesh-relative-vertexID (1), face-relative-vertexID(1)
+ Color: 0, 0,0
+ Face 0: mesh-relative-vertexID (4), face-relative-vertexID(2)
+ Color: 1, 1,0
+ Face 0: mesh-relative-vertexID (3), face-relative-vertexID(3)
+ Color: 0, 0,0
+ Face 1: mesh-relative-vertexID (1), face-relative-vertexID(0)
+ Color: 0, 0,0
+ Face 1: mesh-relative-vertexID (2), face-relative-vertexID(1)
+ Color: 0, 0,0
+ Face 1: mesh-relative-vertexID (5), face-relative-vertexID(2)
+ Color: 0, 0,0
+ Face 1: mesh-relative-vertexID (4), face-relative-vertexID(3)
+ Color: 1, 0,1
+ // 
+*/
+
+FaceVertexInfo;

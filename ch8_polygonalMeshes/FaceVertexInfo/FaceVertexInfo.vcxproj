@@ -124,6 +124,9 @@
   <ItemGroup>
     <ClCompile Include="FaceVertexInfo.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="faceVertexInfo_test.mel" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
