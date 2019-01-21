@@ -1,3 +1,5 @@
+// print UV info, _twoPolygonMesh.ma
+
 #include <maya/MSimple.h>
 
 #include <maya/MStatus.h>
@@ -59,7 +61,55 @@ MStatus UVInfo::doIt(const MArgList& args)
 		}
 
 		float2 vUV;
+		MFloatArray fvUs;
+		MFloatArray fvVs;
+		MIntArray faceIds;
+		MIntArray vertIds;
+		unsigned int fvIndex;
 
+		for (; !vertIter.isDone(); vertIter.next())
+		{
+			vIndex = vertIter.index();
+			txt += MString(" Vertex: ") + vIndex + "\n";
+
+			bool hasUV = false;
+
+			stat = vertIter.getUV(vUV, &cUVSetName);
+			if (stat)
+			{
+				txt += MString(" Vertex UV: (") + vUV[0] + ", " + vUV[1] + ")\n";
+				hasUV = true;
+			}
+
+			stat = vertIter.getUVs(fvUs, fvVs, faceIds, &cUVSetName);
+			if (stat)
+			{
+				for ( i = 0; i < faceIds.length(); i++)
+				{
+					fIndex = faceIds[i];
+
+					meshFn.getPolygonVertices(fIndex, vertIds);
+					for ( fvIndex = 0; fvIndex < vertIds.length(); fvIndex++)
+					{
+						if (vertIds[fvIndex] == vIndex)
+						{
+							break;
+						}
+					}
+
+					txt += MString(" Face-Vertex UV: face, vertex: (") + fIndex + ", " + fvIndex + ") uv:(" + fvUs[i] + ", " + fvVs[i] + ")\n";
+				}
+				hasUV = true;
+			}
+
+			if (!hasUV)
+			{
+				txt += " No assigned uv\n";
+			}
+		}
 	}
 
+	MGlobal::displayInfo(txt);
+
+	return MS::kSuccess;
 }
