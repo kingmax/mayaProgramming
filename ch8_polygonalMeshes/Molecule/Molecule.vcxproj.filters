@@ -18,5 +18,19 @@
     <ClCompile Include="moleculeCmd.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="pluginMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="moleculeUtils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="moleculeCmd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="moleculeUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
