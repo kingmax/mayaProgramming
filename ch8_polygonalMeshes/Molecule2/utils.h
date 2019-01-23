@@ -1,4 +1,6 @@
 #pragma once
+#include <maya/MStatus.h>
+#include <maya/MPoint.h>
 
 MStatus genBall(
 	const MPoint &center,

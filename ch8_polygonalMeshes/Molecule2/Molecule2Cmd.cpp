@@ -1,4 +1,5 @@
 #include "utils.h"
+#include "molecule2Cmd.h"
 
 #include <maya/MPxCommand.h>
 #include <maya/MStatus.h>
@@ -18,24 +19,6 @@
 #include <maya/MFloatArray.h>
 #include <maya/MDagModifier.h>
 
-class Molecule2Cmd : public MPxCommand
-{
-public:
-	virtual MStatus doIt(const MArgList&);
-	virtual MStatus redoIt();
-	virtual MStatus undoIt();
-	virtual bool isUndoable() const;
-
-	static void *creator();
-	static MSyntax newSyntax();
-
-private:
-	MDistance radius;
-	int segs;
-	double ballRodRatio;
-	MDagPathArray selMeshes;
-	MObjectArray objTransforms;
-};
 
 const char *radiusFlag = "-r", *radiusLongFlag = "-radius";
 const char *segsFlag = "-s", *segsLongFlag = "-segments";
@@ -320,7 +303,7 @@ MStatus Molecule2Cmd::redoIt()
 	}
 
 	MString cmd("select -r");
-	for ( i = 0; i < objTransforms.length; i++)
+	for ( i = 0; i < objTransforms.length(); i++)
 	{
 		dagFn.setObject(objTransforms[i]);
 		cmd += " " + dagFn.name();
@@ -328,4 +311,23 @@ MStatus Molecule2Cmd::redoIt()
 	dagMod.commandToExecute(cmd);
 
 	return dagMod.doIt();
+}
+
+MStatus Molecule2Cmd::undoIt()
+{
+	MDGModifier dgMod;
+	MFnDagNode dagFn;
+	MObject child;
+
+	unsigned int i;
+	for (i = 0; i < objTransforms.length(); i++)
+	{
+		dagFn.setObject(objTransforms[i]);
+		child = dagFn.child(0);
+		dgMod.deleteNode(child);
+		
+		dgMod.deleteNode(objTransforms[i]);
+	}
+
+	return dgMod.doIt();
 }
