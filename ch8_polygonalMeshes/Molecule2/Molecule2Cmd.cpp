@@ -167,6 +167,7 @@ MStatus Molecule2Cmd::redoIt()
 
 		// 得到每个选择物体的点坐标 -> meshVerts
 		meshFn.getPoints(meshVerts, MSpace::kWorld);
+		// 遍历顶点，创建球
 		for ( i = 0; i < meshVerts.length(); i++)
 		{
 			// get newVerts index while append new data, [].extents or [].append
@@ -206,7 +207,7 @@ MStatus Molecule2Cmd::redoIt()
 
 		int nRods = 0;
 		MItMeshEdge edgeIter(dagPath);
-		// 遍历边，创建球
+		// 遍历边，创建连接件
 		for (; !edgeIter.isDone(); edgeIter.next(), nRods++)
 		{
 			p0 = edgeIter.point(0, MSpace::kWorld);
@@ -217,7 +218,114 @@ MStatus Molecule2Cmd::redoIt()
 				rodVerts, rodPolyCounts, rodPolyConnects,
 				nRods == 0, rodUCoords, rodVCoords, rodFvUVIDs);
 
+			vertOffset = newVerts.length();
+			nNewPolys += nRodPolys;
 
+			for (i = 0; i < rodVerts.length(); i++)
+				newVerts.append(rodVerts[i]);
+			for (i = 0; i < rodPolyCounts.length(); i++)
+				newPolyCounts.append(rodPolyCounts[i]);
+			for (i = 0; i < rodPolyConnects.length(); i++)
+				newPolyConnects.append(vertOffset + rodPolyConnects[i]);
+
+			if (nRods == 0)
+			{
+				for (i = 0; i < rodUCoords.length(); i++)
+				{
+					newUCoords.append(rodUCoords[i]);
+					newVCoords.append(rodVCoords[i]);
+				}
+			}
+
+			for (i = 0; i < rodFvUVIDs.length(); i++)
+				newFvUVIDs.append(uvOffset + rodFvUVIDs[i]);
 		}
+
+		//ref: https://help.autodesk.com/view/MAYAUL/2018/CHS/?guid=__cpp_ref_class_m_fn_mesh_html
+		objTransform = meshFn.create(
+			newVerts.length(),
+			nNewPolys, 
+			newVerts,
+			newPolyCounts, 
+			newPolyConnects,
+			newUCoords, 
+			newVCoords,
+			MObject::kNullObj, 
+			&stat
+		);
+		/*
+		MObject create	(	
+			int 	numVertices,
+			int 	numPolygons,
+			const MFloatPointArray & 	vertexArray,
+			const MIntArray & 	polygonCounts,
+			const MIntArray & 	polygonConnects,
+			const MFloatArray & 	uArray,
+			const MFloatArray & 	vArray,
+			MObject 	parentOrOwner = MObject::kNullObj,
+			MStatus * 	ReturnStatus = NULL 
+		)		
+		Creates a new polygonal mesh given an array of vertices, polygon connection information, UV information, and sets this function set to operate on the new surface.
+
+		This method is meant to be as efficient as possible and thus assumes that all the given data is topologically correct.
+
+		The parentOrOwner argument is used to specify the owner of the new surface.
+
+		If the parentOrOwner is kMeshData then the created surface will be of type kMeshGeom and will be returned. The parentOrOwner will become the owner of the new mesh.
+
+		If parentOrOwner is NULL then a new transform will be created and returned which will be the parent for the mesh. The new transform will be added to the DAG.
+
+		If parentOrOwner is a DAG node then the new mesh will be returned and the parentOrOwner will become its parent.
+
+		The uv arrays must be of equal size. After using this method to create the mesh and the UV values, you can call assignUVs to assign the corresponding UV ids to the geometry.
+
+		Parameters
+		[in]	numVertices	number of vertices
+		[in]	numPolygons	number of polygons
+		[in]	vertexArray	point (vertex) array. This should include all the vertices in the mesh, and no extras. For example, a cube could have the vertices: { (-1,-1,-1), (1,-1,-1), (1,-1,1), (-1,-1,1), (-1,1,-1), (-1,1,1), (1,1,1), (1,1,-1) }
+		[in]	polygonCounts	array of vertex counts for each polygon. For example the cube would have 6 faces, each of which had 4 verts, so the polygonCounts would be {4,4,4,4,4,4}.
+		[in]	polygonConnects	array of vertex connections for each polygon. For example, in the cube, we have 4 vertices for every face, so we list the vertices for face0, face1, etc consecutively in the array. These are specified by indexes in the vertexArray: e.g for the cube: { 0, 1, 2, 3, 4, 5, 6, 7, 3, 2, 6, 5, 0, 3, 5, 4,0, 4, 7, 1, 1, 7, 6, 2 }
+		[in]	uArray	The array of u values to be set
+		[in]	vArray	The array of v values to be set
+		[in]	parentOrOwner	parent of the polygon that will be created
+		[out]	ReturnStatus	Status code
+		Returns
+		If parentOrOwner is NULL then the transform for this surface is returned
+		If parentOrOwner is a DAG object then the new surface shape is returned
+		The surface geometry is returned if parentOrOwner is of type kMeshData
+		Status Codes:
+		MS::kSuccess The method was successful.
+		MS::kLicenseFailure Application not licensed for attempted operation
+		MS::kInvalidParameter Array length does not match given item count; parentOrOwner was not valid; or there was no model present to add the object to
+		MS::kFailure An object error has occurred.
+		MS::kInsufficientMemory Insufficient memory to complete this method
+		*/
+
+		if (!stat)
+		{
+			MGlobal::displayError(MString("Unable to create mesh: ") + stat.errorString());
+			return stat;
+		}
+
+		objTransforms.append(objTransform);
+
+		meshFn.assignUVs(newPolyCounts, newFvUVIDs);
+
+		meshFn.updateSurface();
+
+		dagFn.setObject(objTransform);
+		dagFn.setName("molecule");
+
+		dagMod.commandToExecute(MString("sets -e -fe initialShadingGroup ") + meshFn.name());
 	}
+
+	MString cmd("select -r");
+	for ( i = 0; i < objTransforms.length; i++)
+	{
+		dagFn.setObject(objTransforms[i]);
+		cmd += " " + dagFn.name();
+	}
+	dagMod.commandToExecute(cmd);
+
+	return dagMod.doIt();
 }
