@@ -1,4 +1,5 @@
 // list gMain xxx Menu global variables
+
 string $all[] = `env`;
 for($i=0;$i<size($all);$i++)
 {
