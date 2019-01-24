@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{2F8F014E-EC23-4298-8A2B-977BF8750B5A}</ProjectGuid>
-    <RootNamespace>Molecule2</RootNamespace>
+    <ProjectGuid>{7B32F7E7-8C31-4853-B938-71B9F98C8B69}</ProjectGuid>
+    <RootNamespace>molecule2origintest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -69,16 +69,13 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-<<<<<<< HEAD
-=======
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetExt>.mll</TargetExt>
     <OutDir>..\..\$(Configuration)\</OutDir>
   </PropertyGroup>
->>>>>>> 980b4fbf8562c81d9340e8aae20a6c9e0a79f85d
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\..\$(Configuration)\</OutDir>
     <TargetExt>.mll</TargetExt>
+    <OutDir>..\..\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -135,17 +132,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <ClCompile Include="Molecule2Cmd.cpp" />
-=======
-    <ClCompile Include="molecule2Cmd.cpp" />
-    <ClCompile Include="pluginMain.cpp" />
-    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="..\..\..\mayaProgrammingB\vol2_src_ref\Plugins\Molecule2\Molecule2Cmd.cpp" />
+    <ClCompile Include="..\..\..\mayaProgrammingB\vol2_src_ref\Plugins\Molecule2\MoleculeUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="molecule2Cmd.h" />
-    <ClInclude Include="utils.h" />
->>>>>>> 980b4fbf8562c81d9340e8aae20a6c9e0a79f85d
+    <ClInclude Include="..\..\..\mayaProgrammingB\vol2_src_ref\Plugins\Molecule2\MoleculeUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="issue.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

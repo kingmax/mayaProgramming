@@ -15,28 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <ClCompile Include="Molecule2Cmd.cpp">
+    <None Include="molecule3CreateUI.mel">
       <Filter>源文件</Filter>
-    </ClCompile>
-=======
-    <ClCompile Include="pluginMain.cpp">
+    </None>
+    <None Include="molecule3DeleteUI.mel">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="molecule2Cmd.cpp">
+    </None>
+    <None Include="molecule3Window.mel">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="utils.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="utils.h">
+    <ClInclude Include="MoleculeUtils.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="molecule2Cmd.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
->>>>>>> 980b4fbf8562c81d9340e8aae20a6c9e0a79f85d
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Molecule3Cmd.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleculeUtils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

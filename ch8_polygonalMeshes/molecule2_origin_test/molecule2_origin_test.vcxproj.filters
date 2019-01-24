@@ -15,28 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <ClCompile Include="Molecule2Cmd.cpp">
+    <ClCompile Include="..\..\..\mayaProgrammingB\vol2_src_ref\Plugins\Molecule2\Molecule2Cmd.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-=======
-    <ClCompile Include="pluginMain.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="molecule2Cmd.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="utils.cpp">
+    <ClCompile Include="..\..\..\mayaProgrammingB\vol2_src_ref\Plugins\Molecule2\MoleculeUtils.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="utils.h">
+    <ClInclude Include="..\..\..\mayaProgrammingB\vol2_src_ref\Plugins\Molecule2\MoleculeUtils.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="molecule2Cmd.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
->>>>>>> 980b4fbf8562c81d9340e8aae20a6c9e0a79f85d
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="issue.txt">
+      <Filter>源文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{2F8F014E-EC23-4298-8A2B-977BF8750B5A}</ProjectGuid>
-    <RootNamespace>Molecule2</RootNamespace>
+    <ProjectGuid>{DA621FCD-4CBB-4CCF-9467-BF9664E38F35}</ProjectGuid>
+    <RootNamespace>Molecule3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -69,13 +69,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-<<<<<<< HEAD
-=======
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetExt>.mll</TargetExt>
     <OutDir>..\..\$(Configuration)\</OutDir>
+    <TargetExt>.mll</TargetExt>
   </PropertyGroup>
->>>>>>> 980b4fbf8562c81d9340e8aae20a6c9e0a79f85d
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\..\$(Configuration)\</OutDir>
     <TargetExt>.mll</TargetExt>
@@ -135,17 +132,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <ClCompile Include="Molecule2Cmd.cpp" />
-=======
-    <ClCompile Include="molecule2Cmd.cpp" />
-    <ClCompile Include="pluginMain.cpp" />
-    <ClCompile Include="utils.cpp" />
+    <None Include="molecule3CreateUI.mel" />
+    <None Include="molecule3DeleteUI.mel" />
+    <None Include="molecule3Window.mel" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="molecule2Cmd.h" />
-    <ClInclude Include="utils.h" />
->>>>>>> 980b4fbf8562c81d9340e8aae20a6c9e0a79f85d
+    <ClInclude Include="MoleculeUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Molecule3Cmd.cpp" />
+    <ClCompile Include="MoleculeUtils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,12 @@
+// list gMain xxx Menu global variables
+
+string $all[] = `env`;
+for($i=0;$i<size($all);$i++)
+{
+	if(`match "^\\$gMain" $all[$i]` == "$gMain")
+	{
+		global string $temp;
+		eval("$temp = " + $all[$i]);
+		print ($all[$i] + " = " + $temp + "\n");
+	}
+}
