@@ -1,0 +1,6 @@
+// molecule3 test
+string $moleculeScripts = "D:\\git\\mayaProgrammingB\\ch8_polygonalMeshes\\Molecule3";
+string $newScriptPath = $moleculeScripts + ";" + `getenv "MAYA_SCRIPT_PATH"`;
+putenv "MAYA_SCRIPT_PATH" $newScriptPath;
+
+loadPlugin "D:\\git\\mayaProgrammingB\\Release\\Molecule3.mll";

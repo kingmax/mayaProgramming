@@ -1,0 +1,2 @@
+1. mel源代码中gMainPolygonsMenu在新版本中已经不存在，主菜单名改成了Mesh，变量名为$gMainMeshMenu (已修正)
+2. 加载
