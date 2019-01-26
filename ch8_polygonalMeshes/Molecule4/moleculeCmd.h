@@ -5,7 +5,7 @@
 #include <maya/MDagModifier.h>
 #include <maya/MObjectArray.h>
 
-class Molecule4Cmd : public MPxCommand
+class MoleculeCmd : public MPxCommand
 {
 public:
 	virtual MStatus doIt(const MArgList&);
@@ -13,7 +13,7 @@ public:
 	virtual MStatus undoIt();
 	virtual bool isUndoable() const { return true; }
 
-	static void *creator() { return new Molecule4Cmd; }
+	static void *creator() { return new MoleculeCmd; }
 	static MSyntax newSyntax();
 
 private:
