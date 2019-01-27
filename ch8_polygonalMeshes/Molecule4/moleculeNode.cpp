@@ -10,6 +10,9 @@
 #include <maya/MIntArray.h>
 #include <maya/MFloatArray.h>
 #include <maya/MFnMeshData.h>
+#include <maya/MItMeshEdge.h>
+#include <maya/MGlobal.h>
+
 
 MTypeId MoleculeNode::id(0x00337);
 MObject MoleculeNode::radius;
@@ -102,10 +105,102 @@ MStatus MoleculeNode::computer(const MPlug & plug, MDataBlock & data)
 
 			for (j = 0; j < ballVerts.length(); j++)
 			{
+				newVerts.append(meshVerts[i] + ballVerts[j]);
+			}
+			for (j = 0; j < ballPolyCounts.length(); j++)
+			{
+				newPolyCounts.append(ballPolyCounts[j]);
+			}
+			for (j = 0; j < ballPolyConnects.length(); j++)
+			{
+				newPolyConnects.append(vertOffset + ballPolyConnects[j]);
+			}
 
+			if (i == 0)
+			{
+				for (j = 0; j < ballUCoords.length(); j++)
+				{
+					newUCoords.append(ballUCoords[j]);
+					newVCoords.append(ballVCoords[j]);
+				}
+			}
+
+			for ( j = 0; j < ballFvUVIDs.length(); j++)
+			{
+				newFvUVIDs.append(uvOffset + ballFvUVIDs[j]);
 			}
 		}
+
+		uvOffset = newUCoords.length();
+
+		int nRods = 0;
+		MItMeshEdge edgeIter(inMeshObj);
+		for (; !edgeIter.isDone(); edgeIter.next(), nRods++)
+		{
+			p0 = edgeIter.point(0, MSpace::kWorld);
+			p1 = edgeIter.point(1, MSpace::kWorld);
+
+			genRod(p0, p1,
+				radius, segs, nRodPolys,
+				rodVerts, rodPolyCounts, rodPolyConnects,
+				nRods == 0, rodUCoords, rodVCoords,
+				rodFvUVIDs);
+
+			vertOffset = newVerts.length();
+			nNewPolys += nRodPolys;
+
+			for ( i = 0; i < rodVerts.length(); i++)
+			{
+				newVerts.append(rodVerts[i]);
+			}
+			for ( i = 0; i < rodPolyCounts.length(); i++)
+			{
+				newPolyCounts.append(rodPolyCounts[i]);
+			}
+			for ( i = 0; i < rodPolyConnects.length(); i++)
+			{
+				newPolyConnects.append(vertOffset + rodPolyConnects[i]);
+			}
+
+			if (nRods == 0)
+			{
+				for ( i = 0; i < rodUCoords.length(); i++)
+				{
+					newUCoords.append(rodUCoords[i]);
+					newVCoords.append(rodVCoords[i]);
+				}
+			}
+
+			for ( i = 0; i < rodFvUVIDs.length(); i++)
+			{
+				newFvUVIDs.append(uvOffset + rodFvUVIDs[i]);
+			}
+		}
+
+		MFnMesh meshFn;
+		meshFn.create(newVerts.length(), nNewPolys, newVerts,
+			newPolyCounts, newPolyConnects,
+			newUCoords, newVCoords,
+			newMeshData, &stat);
+
+		if (!stat)
+		{
+			MGlobal::displayError(MString("Unable to create mesh: ") + stat.errorString());
+			return stat;
+		}
+
+		meshFn.assignUVs(newPolyCounts, newFvUVIDs);
+		meshFn.updateSurface();
+
+		outMeshHnd.set(newMeshData);
+		data.setClean(plug);
 	}
+	else
+	{
+		stat = MS::kUnknownParameter;
+	}
+
+	return stat;
 }
 
 void * MoleculeNode::creator()
