@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="moleculeCmd.cpp" />
     <ClCompile Include="moleculeNode.cpp" />
+    <ClCompile Include="pluginMain.cpp" />
     <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
