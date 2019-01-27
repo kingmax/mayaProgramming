@@ -63,7 +63,48 @@ MStatus MoleculeNode::computer(const MPlug & plug, MDataBlock & data)
 			ballVerts, ballPolyCounts, ballPolyConnects,
 			true, ballUCoords, ballVCoords, ballFvUVIDs);
 
+		unsigned int i, j, vertOffset;
+		MPointArray meshVerts;
+		MPoint p0, p1;
 
+		int nRodPolys;
+		MPointArray rodVerts;
+		MIntArray rodPolyCounts;
+		MIntArray rodPolyConnects;
+		MFloatArray rodUCoords;
+		MFloatArray rodVCoords;
+		MIntArray rodFvUVIDs;
+
+		int nNewPolys;
+		MPointArray newVerts;
+		MIntArray newPolyCounts;
+		MIntArray newPolyConnects;
+		MFloatArray newUCoords;
+		MFloatArray newVCoords;
+		MIntArray newFvUVIDs;
+
+		int uvOffset;
+
+		uvOffset = 0;
+		nNewPolys = 0;
+		newVerts.clear();
+		newPolyCounts.clear();
+		newPolyConnects.clear();
+		newUCoords.clear();
+		newVCoords.clear();
+		newFvUVIDs.clear();
+
+		inMeshFn.getPoints(meshVerts, MSpace::kWorld);
+		for ( i = 0; i < meshVerts.length(); i++)
+		{
+			vertOffset = newVerts.length();
+			nNewPolys += nBallPolys;
+
+			for (j = 0; j < ballVerts.length(); j++)
+			{
+
+			}
+		}
 	}
 }
 
