@@ -207,7 +207,7 @@ MStatus MoleculeNode::computer(const MPlug & plug, MDataBlock & data)
 
 void * MoleculeNode::creator()
 {
-	return new MoleculeNode;	
+	return new MoleculeNode();	
 	//不加括号调节默认构造函数,不作任何初始化成员操作,必须手动初始化任何成员！
 	//因为类并没有显式定义任何构造函数，所以这里的默认构造函数是合成构造函数。
 	//如果加括号调用的话，对于内置类型来说会初始化其为默认值，如int(0).......

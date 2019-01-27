@@ -2,7 +2,7 @@ string $moleculeScripts = "D:\\git\\mayaProgrammingB\\ch8_polygonalMeshes\\Molec
 string $newScriptPath=$moleculeScripts + ";" +`getenv "MAYA_SCRIPT_PATH"`;
 putenv "MAYA_SCRIPT_PATH" $newScriptPath;
 
-unloadPlugin molecule4;
-loadPlugin "D:\git\mayaProgrammingB\Release\Molecule4.mll";
+unloadPlugin -f Molecule4;
+loadPlugin "D:\\git\\mayaProgrammingB\\Release\\Molecule4.mll";
 
 molecule4;

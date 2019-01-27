@@ -4,15 +4,15 @@
 
 global proc molecule4CreateUI()
 {	
-	global string $gMainPolygonsMenu;
+	global string $gMainMeshMenu;
 	
-	if (`menu -exists $gMainPolygonsMenu`)
+	if (`menu -exists $gMainMeshMenu`)
 	{		
 		// Force creation of Polygons menu
-		string $postMenuCmd = `menu -query -postMenuCommand $gMainPolygonsMenu`;
+		string $postMenuCmd = `menu -query -postMenuCommand $gMainMeshMenu`;
 		catch( eval( $postMenuCmd ) );
 
-		setParent -menu $gMainPolygonsMenu;
+		setParent -menu $gMainMeshMenu;
 		menuItem -divider true molecule4DividerItem;
 		menuItem -label "Molecule4" 
 				 -command "molecule4MenuItemCallback 0"

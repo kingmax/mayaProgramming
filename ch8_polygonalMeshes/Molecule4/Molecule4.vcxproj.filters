@@ -39,4 +39,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="molecule4CreateUI.mel">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="molecule4DeleteUI.mel">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="molecule4Window.mel">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="molecule4_test.mel">
+      <Filter>源文件</Filter>
+    </None>
+  </ItemGroup>
 </Project>

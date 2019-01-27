@@ -133,6 +133,12 @@
     <ClInclude Include="moleculeNode.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="molecule4CreateUI.mel" />
+    <None Include="molecule4DeleteUI.mel" />
+    <None Include="molecule4Window.mel" />
+    <None Include="molecule4_test.mel" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

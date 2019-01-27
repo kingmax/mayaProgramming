@@ -82,7 +82,7 @@ MStatus MoleculeCmd::doIt(const MArgList& args)
 		MPlug inMeshPlug = moleculeNodeFn.findPlug("inMesh");
 		dagMods[0].connect(outMeshPlug, inMeshPlug);
 
-		newMeshTransform = dagMods[0].createNode("transform");
+		newMeshTransform = dagMods[0].MDagModifier::createNode("transform");
 		newMeshShape = dagMods[0].createNode("mesh", newMeshTransform);
 		meshShapeNodes.append(newMeshShape);
 
@@ -107,6 +107,7 @@ MStatus MoleculeCmd::doIt(const MArgList& args)
 	for ( i = 0; i < moleculeNodes.length(); i++)
 	{
 		nodeFn.setObject(moleculeNodes[i]);
+		MGlobal::displayInfo(nodeFn.name());
 		dagMods[1].commandToExecute(MString("setAttr ") + nodeFn.name() + ".radius " + radius.value());
 		dagMods[1].commandToExecute(MString("setAttr ") + nodeFn.name() + ".segments " + segs);
 		dagMods[1].commandToExecute(MString("setAttr ") + nodeFn.name() + ".ballRatio " + ballRodRatio);
