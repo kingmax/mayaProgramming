@@ -134,7 +134,7 @@ MStatus MoleculeCmd::doIt(const MArgList& args)
 
 MStatus MoleculeCmd::redoIt()
 {
-	for (size_t i = 0; i < 2; i++)
+	for (unsigned i = 0; i < 2; i++)
 	{
 		dagMods[i].doIt();
 	}
@@ -144,7 +144,7 @@ MStatus MoleculeCmd::redoIt()
 
 MStatus MoleculeCmd::undoIt()
 {
-	for (size_t i = 1; i >= 0; i--)
+	for (unsigned i = 1; i >= 0; i--)
 	{
 		dagMods[i].undoIt();
 	}
