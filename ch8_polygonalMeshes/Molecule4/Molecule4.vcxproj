@@ -125,10 +125,12 @@
   <ItemGroup>
     <ClCompile Include="moleculeCmd.cpp" />
     <ClCompile Include="moleculeNode.cpp" />
+    <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="moleculeCmd.h" />
     <ClInclude Include="moleculeNode.h" />
+    <ClInclude Include="util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

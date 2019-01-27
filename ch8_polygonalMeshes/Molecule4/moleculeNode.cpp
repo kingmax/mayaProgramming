@@ -1,4 +1,5 @@
 #include "moleculeNode.h"
+#include "util.h"
 #include <maya/MFnUnitAttribute.h>
 #include <maya/MDistance.h>
 #include <maya/MFnNumericAttribute.h>
@@ -62,6 +63,7 @@ MStatus MoleculeNode::computer(const MPlug & plug, MDataBlock & data)
 		MFloatArray ballUCoords;
 		MFloatArray ballVCoords;
 		MIntArray ballFvUVIDs;
+
 		genBall(MPoint::origin, ballRatio * radius, segs, nBallPolys,
 			ballVerts, ballPolyCounts, ballPolyConnects,
 			true, ballUCoords, ballVCoords, ballFvUVIDs);
