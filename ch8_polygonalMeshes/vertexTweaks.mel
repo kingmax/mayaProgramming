@@ -1,0 +1,32 @@
+//_cubeMesh2.ma
+getAttr cube.pnts["*"];
+getAttr cube.vrts[0];
+move -r 0.5 0.5 0.5 cube.vtx[0];
+getAttr cube.vrts[0];
+getAttr cube.pnts["*"];
+getAttr cube.pnts[0];
+//vector $final = `getAttr cube.vrts[0]` + `getAttr cube.pnts[0]`;
+pointPosition -local cube.vtx[0];
+
+//page 325
+constructionHistory -toggle true;
+move -r 0.5 0.5 0.5 cube.vtx[0];
+polyMergeVertex;
+getAttr polyTweak1.tweak[0];
+// 结果: 0.5 0.5 0.5 // 
+getAttr cube.pnts[0];
+// 结果: 0 0 0 // 
+move -r 0 0 1 cube.vtx[0];
+getAttr cube.pnts[0];
+// 结果: 0 0 1 // 
+polyMergeVertex;
+getAttr cube.pnts[0];
+// 结果: 0 0 0 //
+pointPosition -local cube.vtx[0];
+// 结果: 0 0 2 // 
+getAttr cube.vrts[0];
+// 结果: 0 0 2 // 
+getAttr cube.vtx[0];
+// 结果: 0 0 0 // 
+
+constructionHistory -q -toggle;
