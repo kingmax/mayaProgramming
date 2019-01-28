@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{89CDD44C-6984-42A1-91D1-D0607A3370A4}</ProjectGuid>
-    <RootNamespace>Molecule4</RootNamespace>
+    <ProjectGuid>{2C87B7C1-3FCE-406D-BA26-3BE40315359D}</ProjectGuid>
+    <RootNamespace>molecule4origin</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\..\$(Configuration)\</OutDir>
     <TargetExt>.mll</TargetExt>
+    <OutDir>..\..\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -112,7 +112,6 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>C:\Program Files\Autodesk\Maya2018\include</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -123,21 +122,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="moleculeCmd.cpp" />
-    <ClCompile Include="moleculeNode.cpp" />
-    <ClCompile Include="pluginMain.cpp" />
-    <ClCompile Include="util.cpp" />
+    <ClCompile Include="..\..\vol2_src_ref\Plugins\Molecule4\Molecule4Cmd.cpp" />
+    <ClCompile Include="..\..\vol2_src_ref\Plugins\Molecule4\Molecule4Node.cpp" />
+    <ClCompile Include="..\..\vol2_src_ref\Plugins\Molecule4\MoleculeUtils.cpp" />
+    <ClCompile Include="..\..\vol2_src_ref\Plugins\Molecule4\PluginMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="moleculeCmd.h" />
-    <ClInclude Include="moleculeNode.h" />
-    <ClInclude Include="util.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="molecule4CreateUI.mel" />
-    <None Include="molecule4DeleteUI.mel" />
-    <None Include="molecule4Window.mel" />
-    <None Include="molecule4_test.mel" />
+    <ClInclude Include="..\..\vol2_src_ref\Plugins\Molecule4\Molecule4Cmd.h" />
+    <ClInclude Include="..\..\vol2_src_ref\Plugins\Molecule4\Molecule4Node.h" />
+    <ClInclude Include="..\..\vol2_src_ref\Plugins\Molecule4\MoleculeUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

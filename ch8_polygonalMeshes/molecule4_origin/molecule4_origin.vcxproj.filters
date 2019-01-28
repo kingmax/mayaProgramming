@@ -15,42 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="moleculeNode.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="moleculeCmd.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="util.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="moleculeCmd.cpp">
+    <ClCompile Include="..\..\vol2_src_ref\Plugins\Molecule4\Molecule4Cmd.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="moleculeNode.cpp">
+    <ClCompile Include="..\..\vol2_src_ref\Plugins\Molecule4\Molecule4Node.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="util.cpp">
+    <ClCompile Include="..\..\vol2_src_ref\Plugins\Molecule4\MoleculeUtils.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="pluginMain.cpp">
+    <ClCompile Include="..\..\vol2_src_ref\Plugins\Molecule4\PluginMain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="molecule4_test.mel">
-      <Filter>源文件</Filter>
-    </None>
-    <None Include="molecule4CreateUI.mel">
-      <Filter>源文件</Filter>
-    </None>
-    <None Include="molecule4DeleteUI.mel">
-      <Filter>源文件</Filter>
-    </None>
-    <None Include="molecule4Window.mel">
-      <Filter>源文件</Filter>
-    </None>
+    <ClInclude Include="..\..\vol2_src_ref\Plugins\Molecule4\Molecule4Cmd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vol2_src_ref\Plugins\Molecule4\Molecule4Node.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vol2_src_ref\Plugins\Molecule4\MoleculeUtils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

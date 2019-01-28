@@ -4,9 +4,9 @@
 
 global proc molecule4DeleteUI()
 {
-	global string $gMainPolygonsMenu;
+	global string $gMainMeshMenu;
 	
-	if (`menu -exists $gMainPolygonsMenu`)
+	if (`menu -exists $gMainMeshMenu`)
 	{
 		deleteUI -menuItem molecule4DividerItem;
 		deleteUI -menuItem molecule4Item;
