@@ -9,6 +9,8 @@
 #include <maya/MTypes.h>
 #include <maya/MGlobal.h>
 #include <maya/MVector.h>
+
+#define _USE_MATH_DEFINES
 #include <math.h>
 
 int linearIndex( 

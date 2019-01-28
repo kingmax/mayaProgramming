@@ -2,7 +2,16 @@ string $moleculeScripts = "D:\\git\\mayaProgrammingB\\ch8_polygonalMeshes\\Molec
 string $newScriptPath=$moleculeScripts + ";" +`getenv "MAYA_SCRIPT_PATH"`;
 putenv "MAYA_SCRIPT_PATH" $newScriptPath;
 
+<<<<<<< HEAD
 unloadPlugin -f Molecule4;
+=======
+// origin test
+loadPlugin "D:\\git\\mayaProgrammingB\\Release\\molecule4_origin.mll"
+unloadPlugin -f molecule4_origin;
+
+
+unloadPlugin Molecule4;
+>>>>>>> ec0609c9e50e6dc624440bef042287c0289b6d5b
 loadPlugin "D:\\git\\mayaProgrammingB\\Release\\Molecule4.mll";
 
 molecule4;
