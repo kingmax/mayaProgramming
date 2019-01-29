@@ -1,0 +1,10 @@
+// chapter11: contexts(tools)
+currentCtx;
+// 结果: moveSuperContext // 
+
+contextInfo -title moveSuperContext;
+// 结果: 移动工具 // 
+
+contextInfo -class moveSuperContext;
+// 结果: manipMove // 
+
