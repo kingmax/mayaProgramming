@@ -8,3 +8,6 @@ contextInfo -title moveSuperContext;
 contextInfo -class moveSuperContext;
 // 结果: manipMove // 
 
+string $selCtx = `selectContext`;
+// 结果: selectContext1 // 
+setToolTo $selCtx;
