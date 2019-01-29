@@ -11,3 +11,9 @@ contextInfo -class moveSuperContext;
 string $selCtx = `selectContext`;
 // 结果: selectContext1 // 
 setToolTo $selCtx;
+
+ctxAbort $selCtx;
+ctxCompletion $selCtx;
+resetTool $selCtx;
+toolHasOptions $selCtx;
+// 结果: 1 // 
