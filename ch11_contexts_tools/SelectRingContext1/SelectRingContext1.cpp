@@ -1,3 +1,5 @@
+#include "selectRingContext1.h"
+
 #include <maya/MPxContext.h>
 #include <maya/MGlobal.h>
 #include <maya/MStatus.h>
@@ -14,31 +16,6 @@
 #include <maya/MIntArray.h>
 #include <maya/MFnSingleIndexedComponent.h>
 #include <maya/MItMeshPolygon.h>
-
-class SelectRingContext1 : public MPxContext
-{
-public:
-	SelectRingContext1();
-
-	virtual void toolOnSetup(MEvent &event);
-	virtual void toolOffCleanup();
-
-	virtual MStatus doPress(MEvent &event);
-	virtual MStatus doRelease(MEvent &event);
-
-private:
-	MGlobal::MSelectionMode prevSelMode;
-	MSelectionMask prevCompMask;
-	MSelectionMask prevObjMask;
-
-	MGlobal::ListAdjustment listAdjust;
-
-	short pressX, pressY;
-	short releaseX, releaseY;
-	int clickBoxSize;
-
-	static const MString helpText;
-};
 
 const MString SelectRingContext1::helpText("Click on an edge");
 

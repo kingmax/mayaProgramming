@@ -123,6 +123,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="SelectRingContext1.cpp" />
+    <ClCompile Include="SelectRingContextCmd1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SelectRingContext1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
