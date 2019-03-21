@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage SchemaVersion="1.0"
+	ProductType="Application"
+
+	AutodeskProduct="Maya"
+	Name="Wire"
+	Description="wire"
+	AppVersion="0.2.1"
+	Author="Piotr Makal"
+	AppNameSpace="com.wire.exchange.maya.wire"
+	HelpFile="./Contents/docs/Help.html"
+	OnlineDocumentation="https://github.com/piotrMakal/maya-wire-plugin"
+
+	ProductCode="*"
+	UpgradeCode="{73E12532-852D-4B4D-A37B-33FA1BF43B2E}" >
+	
+	<CompanyDetails Name="Piotr Makal"
+		Phone=" "
+		Url="https://apps.autodesk.com/en/Publisher/PublisherHomepage?ID=9CEEMLVHYT8G"
+		Email="https://github.com/piotrMakal" />
+
+	<!-- Prevent to load in other version than Maya 2008 -->
+	<RuntimeRequirements SupportPath="./Contents/docs" OS="win64|macOS|linux" Platform="Maya" SeriesMin="2017"  />
+
+	<Components>
+		<RuntimeRequirements SupportPath="./Contents/docs" OS="win64|macOS|linux" Platform="Maya" SeriesMin="2017" />
+		<MayaEnv expr="MAYA_SCRIPT_PATH+:=shelves" />
+		<MayaEnv expr="MAYA_PLUG_IN_PATH+:=plug-ins" /> 
+		<ComponentEntry ModuleName="./Contents/plug-ins/wire.py" AutoLoad="True" />
+		<ComponentEntry ModuleName="./Contents/icons/wireMeshCreator.png" />
+	</Components>
+	
+</ApplicationPackage>
